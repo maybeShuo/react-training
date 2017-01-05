@@ -18,53 +18,26 @@ export default class App extends Component {
 
     }
 
-    async componentDidMount()
+    componentDidMount()
     {
-        const result = await this.getPlayLists();
-        const test = await this.testPromise();
-        console.log(test);
-        console.log(result);
+
     }
 
     render()
     {
         return (
-            <div className="nm-app">Netease Music</div>
+            <div className="nm-app">
+                <header>
+                    <div className="logo"></div>
+                    <h1>网易云音乐</h1>
+                </header>
+                <main>
+                    <aside></aside>
+                    <section></section>
+                </main>
+                <footer></footer>
+            </div>
         );
     }
 
-    async getPlayLists()
-    {
-        let res = null;
-        try {
-            res = await $.ajax({
-                url: `/api/user/playlist/`,
-                data: {
-                    uid: "78843035",
-                    limit: 1000,
-                    offset: 0
-                }
-            });
-        }
-        catch (e)
-        {
-            throw e;
-        }
-
-        if (res.code === 200)
-        {
-            return res.playlist;
-        }
-        else
-        {
-            console.log("Response with error code:" + res.code);
-        }
-    }
-
-    testPromise()
-    {
-        return new Promise((resolve, reject) => {
-            resolve("promise");
-        });
-    }
 }
