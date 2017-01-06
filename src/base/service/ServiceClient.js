@@ -17,6 +17,31 @@ export default class ServiceClient
         return ServiceClient._instance;
     }
 
+    getUserPlayListsByPromise(uid)
+    {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: `${NM_API}/user/playlist`,
+                type: "GET",
+                data: {
+                    uid,
+                    limit: 1000,
+                    offset: 0
+                }
+            })
+            .always(res => {
+                if (res.code === 200)
+                {
+                    resolve(res.playlist);
+                }
+                else
+                {
+                    reject("error");
+                }
+            });
+        });
+    }
+
     async getUserPlayLists(uid)
     {
         let res = null;
