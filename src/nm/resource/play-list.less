@@ -1,4 +1,33 @@
 .nm-play-list
 {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li
+    {
+        line-height: @nm-list-item-height;
+        display: block;
+        margin: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+
+        > .iconfont
+        {
+            padding-right: 12px;
+        }
+
+        &.selected
+        {
+            color: @nm-selection-color;
+            background-color: @nm-selection-bg;
+        }
+    }
+
 
 }
