@@ -28,15 +28,6 @@ export default class App extends Component {
 
     async componentDidMount()
     {
-        // ServiceClient.getInstance().getUserPlayListsByPromise("78843035").then(res => {
-        //     this.setState({
-        //         playlists: res
-        //     });
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
-
         const result = await ServiceClient.getInstance().getUserPlayLists("78843035");
         this.setState({
             playlists: result
